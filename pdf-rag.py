@@ -6,8 +6,7 @@
 # 6. retrieve the similar documents and present them to the user
 ## run pip install -r requirements.txt to install the required packages
 
-from langchain_community.document_loaders import UnstructuredPDFLoader
-from langchain_community.document_loaders import OnlinePDFLoader
+from langchain_community.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader
 
 doc_path = "./data/BOI.pdf"
 model = "llama3.2"
