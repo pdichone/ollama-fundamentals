@@ -32,7 +32,7 @@ content = data[0].page_content
 
 from langchain_ollama import OllamaEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 
 # Split and chunk
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=300)
@@ -56,13 +56,13 @@ print("done adding to vector database....")
 
 
 ## === Retrieval ===
-from langchain.prompts import ChatPromptTemplate, PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 from langchain_ollama import ChatOllama
 
 from langchain_core.runnables import RunnablePassthrough
-from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain_classic.retrievers.multi_query import MultiQueryRetriever
 
 # set up our model to use
 llm = ChatOllama(model=model)

@@ -49,7 +49,7 @@ for pdf_file in pdf_files:
         )
 
 # Split and chunk
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1200, chunk_overlap=300)
 
@@ -101,8 +101,8 @@ embeddings = generate_embeddings(texts)
 
 
 ## === Add Embeddings to Vector Database Chromadb ===
-from langchain_community.vectorstores import Chroma
-from langchain.schema import Document
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
 from langchain_ollama import OllamaEmbeddings
 
 # Wrap texts with their respective metadata into Document objects
@@ -130,11 +130,11 @@ vector_db = Chroma.from_documents(
 
 
 # Implement a Query Processing Muliti-query Retriever
-from langchain.prompts import ChatPromptTemplate, PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_ollama import ChatOllama
 from langchain_core.runnables import RunnablePassthrough
-from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain_classic.retrievers.multi_query import MultiQueryRetriever
 
 # LLM from Ollama
 local_model = "llama3.2"
@@ -189,6 +189,11 @@ api_key = os.getenv("ELEVENLABS_API_KEY")
 
 # Generate the audio stream
 client = ElevenLabs(api_key=api_key)
-audio_stream = client.generate(text=text_response, model="eleven_turbo_v2", stream=True)
+# elevenlabs v2 SDK: client.generate() was removed; use text_to_speech.stream()
+audio_stream = client.text_to_speech.stream(
+    text=text_response,
+    voice_id=os.getenv("ELEVENLABS_VOICE_ID", "JBFqnCBsd6RMkjVDRZzb"),
+    model_id="eleven_turbo_v2_5",
+)
 # play(audio_stream)
 stream(audio_stream)
