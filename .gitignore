@@ -15,3 +15,6 @@ chroma_db/
 
 # ignore the db folder
 db/
+
+# ignore generated script output
+data/categorized_grocery_list.txt

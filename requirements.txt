@@ -1,6 +1,10 @@
 ollama
+requests
+streamlit
 chromadb
-pdfplumber 
+langchain-chroma
+pdfplumber
+pikepdf
 langchain
 langchain-core
 langchain-ollama
@@ -9,6 +13,7 @@ langchain_text_splitters
 unstructured
 unstructured[all-docs]
 fastembed
-pikepdf
 sentence-transformers
 elevenlabs
+langchain-classic
+python-dotenv
