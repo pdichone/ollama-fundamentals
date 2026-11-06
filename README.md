@@ -39,3 +39,15 @@ Then **The AI Guild** is the perfect fit for you.
 Want to dive deeper and get the full experience? 🚀[Join the AI Guild Community](https://bit.ly/ai-guild-join) and unlock all the benefits of our growing community.
 
 We look forward to seeing what you’ll build with us!
+
+
+## Setup update (November 2026)
+
+Use **Python 3.12** and install the pinned dependencies in a fresh virtual environment:
+
+```bash
+pip install -r requirements.txt
+```
+
+Dependencies are pinned to the versions used in the lectures, because newer LangChain releases moved
+several imports used in this code.
